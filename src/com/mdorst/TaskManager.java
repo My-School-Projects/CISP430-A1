@@ -19,6 +19,7 @@ public class TaskManager {
      * Input from datain.txt
      */
     public void input() {
+        hashTable = new HashTable<>(new StringHash());
         Data datain = new Data("data/datain.txt");
         String line;
         while ((line = datain.getLine()) != null) {
@@ -30,14 +31,14 @@ public class TaskManager {
     }
     public void outputToFile() {
         try {
-            hashTable.print(new PrintStream("data/dataout.txt", "UTF-8"));
+            hashTable.print(new PrintStream("data/report.txt", "UTF-8"));
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
     public void restore() {
         String line;
-        Data dataout = new Data("data/dataout.txt");
+        Data dataout = new Data("data/report.txt");
         hashTable = new HashTable<>(new StringHash());
         while ((line = dataout.getLine()) != null) {
             if (line.startsWith(" ")) {
@@ -48,7 +49,6 @@ public class TaskManager {
     public void clear() {
         hashTable = new HashTable<>(new StringHash());
     }
-    // restore from dataout.txt
     // search
     // compute hash efficiency statistics
 

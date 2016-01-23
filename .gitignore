@@ -1,7 +1,7 @@
 out
 .idea
 *.iml
-data/dataout.txt
+data/report.txt
 data/restored.txt
 
 # Windows image file caches
