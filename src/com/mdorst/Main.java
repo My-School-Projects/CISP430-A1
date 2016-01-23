@@ -10,8 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Data datain = new Data("data/datain.txt");
-        Data dataout = new Data("data/dataout.txt");
-        HashTable<String, String, StringHash> hashTable = new HashTable<>(new StringHash());
+        HashTable<String, String> hashTable = new HashTable<>(new StringHash());
         String line;
 
         while ((line = datain.getLine()) != null) {
@@ -23,6 +22,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        Data dataout = new Data("data/dataout.txt");
         hashTable = new HashTable<>(new StringHash());
         while ((line = dataout.getLine()) != null) {
             if (line.startsWith(" ")) {
