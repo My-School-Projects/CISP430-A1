@@ -22,13 +22,13 @@ public class Main {
                     break;
                 }
                 if (ch == '1') {
-                    taskManager.input();
+                    taskManager.read();
                 }
                 if (ch == '2') {
-                    taskManager.outputToFile();
+                    taskManager.write();
                 }
                 if (ch == '3') {
-                    taskManager.outputToConsole();
+                    taskManager.display();
                 }
                 if (ch == '4') {
                     taskManager.restore();

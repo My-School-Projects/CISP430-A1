@@ -18,7 +18,7 @@ public class TaskManager {
     /**
      * Input from datain.txt
      */
-    public void input() {
+    public void read() {
         hashTable = new HashTable<>(new StringHash());
         Data datain = new Data("data/datain.txt");
         String line;
@@ -26,10 +26,10 @@ public class TaskManager {
             hashTable.add(line.substring(0, 10), line.substring(10));
         }
     }
-    public void outputToConsole() {
+    public void display() {
         hashTable.print(System.out);
     }
-    public void outputToFile() {
+    public void write() {
         try {
             hashTable.print(new PrintStream("data/report.txt", "UTF-8"));
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
