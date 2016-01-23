@@ -2,6 +2,7 @@ out
 .idea
 *.iml
 data/dataout.txt
+data/restored.txt
 
 # Windows image file caches
 Thumbs.db
