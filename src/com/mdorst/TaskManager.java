@@ -46,7 +46,9 @@ public class TaskManager {
             }
         }
     }
-    // search
+    public String search(String key) {
+        return hashTable.search(key);
+    }
     // compute hash efficiency statistics
 
     public TaskManager() {

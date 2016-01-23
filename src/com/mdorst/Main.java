@@ -2,6 +2,7 @@ package com.mdorst;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 /**
  * Michael Dorst
@@ -34,7 +35,10 @@ public class Main {
                     taskManager.restore();
                 }
                 if (ch == '5') {
-                    // Search
+                    out.print("Query: ");
+                    Scanner input = new Scanner(System.in);
+                    input.nextLine();
+                    out.println(taskManager.search(input.nextLine()));
                 }
                 if (ch == '6') {
                     // Compute efficiency statistics

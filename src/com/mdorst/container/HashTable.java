@@ -26,6 +26,15 @@ public class HashTable<Key, Value> {
         table[hash.apply(key) % 20].add(new Pair(key, value));
     }
 
+    public Value search(Key key) {
+        for (Pair pair : table[hash.apply(key) % 20]) {
+            if (key.equals(pair.key)) {
+                return pair.value;
+            }
+        }
+        return null;
+    }
+
     public void print(PrintStream stream) {
         for (int i = 0; i < 20; i++) {
             stream.println("Bucket " + (i+1));
