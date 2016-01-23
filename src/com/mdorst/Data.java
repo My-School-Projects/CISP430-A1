@@ -1,6 +1,8 @@
 package com.mdorst;
 
-import java.io.IOException;
+import com.mdorst.container.HashTable;
+
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,6 +22,27 @@ public class Data {
         } else {
             return null;
         }
+    }
+
+    public enum Destination {
+        toFile,
+        toConsole
+    }
+
+    public void print(HashTable<String, String, StringHash> hashTable, Destination destination) {
+        PrintStream stream = null;
+        if (destination == Data.Destination.toFile) {
+            try {
+                stream = new PrintStream("data/dataout.txt", "UTF-8");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        } else {
+            stream = System.out;
+        }
+        hashTable.print(stream);
     }
 
     public Data(String path) {

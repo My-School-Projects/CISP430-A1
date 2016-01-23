@@ -1,5 +1,6 @@
 package com.mdorst.container;
 
+import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
@@ -24,11 +25,11 @@ public class HashTable<Key, Value, HashFunction extends Function<Key, Integer>> 
         table[hash.apply(key) % 20].add(new Pair(key, value));
     }
 
-    public void debug() {
+    public void print(PrintStream stream) {
         for (int i = 0; i < 20; i++) {
-            System.out.println("Bucket " + (i+1));
+            stream.println("Bucket " + (i+1));
             for (int j = 0; j < table[i].size(); j++) {
-                System.out.println("  Slot " + (j+1) + " : " + table[i].get(j).key + "   " + table[i].get(j).value);
+                stream.println("  Slot " + (j+1) + " : " + table[i].get(j).key + "   " + table[i].get(j).value);
             }
         }
     }
