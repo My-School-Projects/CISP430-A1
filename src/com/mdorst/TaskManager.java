@@ -21,10 +21,11 @@ public class TaskManager {
             hashTable.add(line.substring(0, 10), line.substring(10));
         }
     }
-    // input from datain.txt
+    public void outputToConsole() {
+        hashTable.print(System.out);
+    }
     // output to dataout.txt
     // restore from dataout.txt
-    // display contents
     // search
     // compute hash efficiency statistics
 
