@@ -41,7 +41,7 @@ public class Main {
                     out.println(taskManager.search(input.nextLine()));
                 }
                 if (ch == '6') {
-                    // Compute efficiency statistics
+                    // TODO: Compute efficiency statistics
                 }
                 if (ch == '?') {
                     printMenu();
