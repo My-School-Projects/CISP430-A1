@@ -9,6 +9,15 @@ import java.util.function.Function;
  */
 public class StringHash implements Function<String, Integer> {
     public Integer apply(String str) {
-        return str.charAt(2) + str.charAt(4) + str.charAt(6);
+        if (str.length() > 6) {
+            return str.charAt(2) + str.charAt(4) + str.charAt(6);
+        }
+        if (str.length() > 4) {
+            return str.charAt(2) + str.charAt(4);
+        }
+        if (str.length() > 2) {
+            return (int) str.charAt(2);
+        }
+        return 0;
     }
 }
