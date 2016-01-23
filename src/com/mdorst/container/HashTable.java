@@ -9,7 +9,7 @@ import java.util.function.Function;
  * Micahel Dorst
  * CISP 430
  */
-public class HashTable<Key, Value, HashFunction extends Function<Key, Integer>> {
+public class HashTable<Key, Value> {
     private class Pair {
         public Key key;
         public Value value;
@@ -18,7 +18,7 @@ public class HashTable<Key, Value, HashFunction extends Function<Key, Integer>> 
             this.value = value;
         }
     }
-    private HashFunction hash;
+    private Function<Key, Integer> hash;
     private List<Pair>[] table;
 
     public void add(Key key, Value value) {
@@ -34,7 +34,7 @@ public class HashTable<Key, Value, HashFunction extends Function<Key, Integer>> 
         }
     }
 
-    public HashTable(HashFunction hash) {
+    public HashTable(Function<Key, Integer> hash) {
         this.hash = hash;
         table = new List[20];
         for (int i = 0; i < 20; i++) {
