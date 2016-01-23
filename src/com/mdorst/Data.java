@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Michael Dorst
+ * CISP 430
+ * Assignment 1 - Hashing
  */
 public class Data {
     private List<String> data;

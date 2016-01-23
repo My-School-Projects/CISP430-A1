@@ -6,6 +6,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Michael Dorst
+ * CISP 430
+ * Assignment 1 - Hashing
+ */
 public class Main {
 
     public static void main(String[] args) {

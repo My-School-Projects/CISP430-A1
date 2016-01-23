@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.function.Function;
 
 /**
- * Micahel Dorst
+ * Michael Dorst
  * CISP 430
+ * Assignment 1 - Hashing
  */
 public class HashTable<Key, Value> {
     private class Pair {
