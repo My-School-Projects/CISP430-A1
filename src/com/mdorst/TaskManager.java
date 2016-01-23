@@ -46,9 +46,6 @@ public class TaskManager {
             }
         }
     }
-    public void clear() {
-        hashTable = new HashTable<>(new StringHash());
-    }
     // search
     // compute hash efficiency statistics
 
