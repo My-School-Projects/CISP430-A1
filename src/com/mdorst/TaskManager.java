@@ -2,6 +2,10 @@ package com.mdorst;
 
 import com.mdorst.container.HashTable;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Michael Dorst
  * CISP 430
@@ -24,7 +28,13 @@ public class TaskManager {
     public void outputToConsole() {
         hashTable.print(System.out);
     }
-    // output to dataout.txt
+    public void outputToFile() {
+        try {
+            hashTable.print(new PrintStream("data/dataout.txt", "UTF-8"));
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
     // restore from dataout.txt
     // search
     // compute hash efficiency statistics
