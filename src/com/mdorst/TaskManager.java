@@ -35,6 +35,19 @@ public class TaskManager {
             e.printStackTrace();
         }
     }
+    public void restore() {
+        String line;
+        Data dataout = new Data("data/dataout.txt");
+        hashTable = new HashTable<>(new StringHash());
+        while ((line = dataout.getLine()) != null) {
+            if (line.startsWith(" ")) {
+                hashTable.add(line.substring(11, 21), line.substring(24));
+            }
+        }
+    }
+    public void clear() {
+        hashTable = new HashTable<>(new StringHash());
+    }
     // restore from dataout.txt
     // search
     // compute hash efficiency statistics
