@@ -10,6 +10,28 @@ import java.util.function.Function;
  * CISP 430
  * Assignment 1 - Hashing
  */
+
+/**
+ * HashTable includes Pair
+ * 
+ * Key : Generic
+ * Value : Generic
+ * 
+ * HashTable
+ * - hash : Function
+ * - table : Array [0..19] of Bucket
+ * + add(Key, Value)
+ * + search(Key) : Value
+ * + print(PrintStream)
+ * + computeAverageChainLength() : real
+ * 
+ * Pair
+ *   + key : Key
+ *   + value : Value
+ * 
+ * Bucket : list collection of Pair
+ */
+
 public class HashTable<Key, Value> {
     private class Pair {
         public Key key;
