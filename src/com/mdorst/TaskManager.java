@@ -49,7 +49,10 @@ public class TaskManager {
     public String search(String key) {
         return hashTable.search(key);
     }
-    // compute hash efficiency statistics
+
+    public float computeAverageChainLength() {
+        return hashTable.computeAverageChainLength();
+    }
 
     public TaskManager() {
         hashTable = new HashTable<>(new StringHash());

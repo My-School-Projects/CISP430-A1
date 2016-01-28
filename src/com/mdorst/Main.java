@@ -41,7 +41,7 @@ public class Main {
                     out.println(taskManager.search(input.nextLine()));
                 }
                 if (ch == '6') {
-                    // TODO: Compute efficiency statistics
+                    out.println("Average Collision Chain Length:" + taskManager.computeAverageChainLength());
                 }
                 if (ch == '?') {
                     printMenu();

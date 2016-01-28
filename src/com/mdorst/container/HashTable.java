@@ -43,6 +43,14 @@ public class HashTable<Key, Value> {
             }
         }
     }
+    
+    public float computeAverageChainLength() {
+        float length = 0;
+        for (int i = 0; i < 20; i++) {
+            length += table[i].size();
+        }
+        return length / 20;
+    }
 
     public HashTable(Function<Key, Integer> hash) {
         this.hash = hash;
