@@ -11,6 +11,19 @@ import java.io.UnsupportedEncodingException;
  * CISP 430
  * Assignment 1 - Hashing
  */
+
+/**
+ * Application
+ * - hashTable : HashTable (Key = String, Value = String)
+ *
+ * + read(String)
+ * + displayReport()
+ * + write(String)
+ * + search(String)
+ * + displayStatistics()
+ * + constructor()
+ */
+
 public class Application {
 
     static PrintStream out;
@@ -24,6 +37,7 @@ public class Application {
             hashTable.add(line.substring(0, 10), line.substring(10));
         }
     }
+    
     public void displayReport() {
         out.println("Hash Table Verification Report");
         out.println("==============================");
@@ -35,6 +49,7 @@ public class Application {
         });
         out.println();
     }
+
     public void write(String path) {
         try {
             PrintStream stream = new PrintStream(path, "UTF-8");
@@ -45,6 +60,7 @@ public class Application {
             e.printStackTrace();
         }
     }
+
     public void search(String path) {
         String query;
         DataInput search = new DataInput(path);
@@ -64,9 +80,11 @@ public class Application {
         }
         out.println();
     }
+
     public void displayStatistics() {
         out.println(hashTable.computeAverageChainLength());
     }
+
     public Application() {
         hashTable = new HashTable<>(
             (String key) -> {
