@@ -1,8 +1,12 @@
 package com.mdorst.container;
 
+import com.mdorst.util.function.TriFunction;
+
 import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -55,6 +59,17 @@ public class HashTable<Key, Value> {
             }
         }
         return null;
+    }
+
+    public void search(Key key, TriFunction<Value, Integer, Integer> f) {
+        int bucket = hash.apply(key) % 20;
+        for (int slot = 0; slot < table[bucket].size(); slot++) {
+            Pair pair = table[bucket].get(slot);
+            if (key.equals(pair.key)) {
+                f.apply(pair.value, bucket, slot);
+            }
+        }
+        f.apply(null, null, null);
     }
 
     public void printData(PrintStream stream) {
