@@ -84,11 +84,15 @@ public class HashTable<Key, Value> {
         return length / 20;
     }
 
-    public HashTable(Function<Key, Integer> hash) {
-        this.hash = hash;
+    public void reset() {
         table = new List[20];
         for (int i = 0; i < 20; i++) {
             table[i] = new LinkedList<>();
         }
+    }
+
+    public HashTable(Function<Key, Integer> hash) {
+        this.hash = hash;
+        reset();
     }
 }

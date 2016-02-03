@@ -17,7 +17,7 @@ public class TaskManager {
     HashTable<String, String> hashTable;
 
     public void read(String path) {
-        hashTable = new HashTable<>(new StringHash());
+        hashTable.reset();
         DataInput datain = new DataInput(path);
         String line;
         while ((line = datain.getLine()) != null) {
@@ -56,7 +56,20 @@ public class TaskManager {
         out.println(hashTable.computeAverageChainLength());
     }
     public TaskManager() {
-        hashTable = new HashTable<>(new StringHash());
+        hashTable = new HashTable<>(
+            (String key) -> {
+                if (key.length() > 6) {
+                    return key.charAt(2) + key.charAt(4) + key.charAt(6);
+                }
+                if (key.length() > 4) {
+                    return key.charAt(2) + key.charAt(4);
+                }
+                if (key.length() > 2) {
+                    return (int) key.charAt(2);
+                }
+                return 0;
+            }
+    );
         out = System.out;
     }
 }
