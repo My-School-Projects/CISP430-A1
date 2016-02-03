@@ -5,8 +5,6 @@ import com.mdorst.util.function.TriFunction;
 import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -61,11 +59,11 @@ public class HashTable<Key, Value> {
         for (int slot = 0; slot < table[bucket].size(); slot++) {
             Pair pair = table[bucket].get(slot);
             if (key.equals(pair.key)) {
-                f.apply(pair.value, bucket, slot);
+                f.call(pair.value, bucket, slot);
                 return pair.value;
             }
         }
-        f.apply(null, null, null);
+        f.call(null, null, null);
         return null;
     }
 
