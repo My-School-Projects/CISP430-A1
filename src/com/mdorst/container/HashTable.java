@@ -53,23 +53,20 @@ public class HashTable<Key, Value> {
     }
 
     public Value search(Key key) {
-        for (Pair pair : table[hash.apply(key) % 20]) {
-            if (key.equals(pair.key)) {
-                return pair.value;
-            }
-        }
-        return null;
+        return search(key, (v, b, s) -> {});
     }
 
-    public void search(Key key, TriFunction<Value, Integer, Integer> f) {
+    public Value search(Key key, TriFunction<Value, Integer, Integer> f) {
         int bucket = hash.apply(key) % 20;
         for (int slot = 0; slot < table[bucket].size(); slot++) {
             Pair pair = table[bucket].get(slot);
             if (key.equals(pair.key)) {
                 f.apply(pair.value, bucket, slot);
+                return pair.value;
             }
         }
         f.apply(null, null, null);
+        return null;
     }
 
     public void printData(PrintStream stream) {
