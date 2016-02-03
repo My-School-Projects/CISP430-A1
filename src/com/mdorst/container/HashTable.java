@@ -1,5 +1,6 @@
 package com.mdorst.container;
 
+import com.mdorst.util.function.QuadFunction;
 import com.mdorst.util.function.TriFunction;
 
 import java.io.PrintStream;
@@ -65,6 +66,15 @@ public class HashTable<Key, Value> {
         }
         f.call(null, null, null);
         return null;
+    }
+
+    public void iterate(QuadFunction<Key, Value, Integer, Integer> f) {
+        for (int bucket = 0; bucket < 20; bucket++) {
+            for (int slot = 0; slot < table[bucket].size(); slot++) {
+                Pair pair = table[bucket].get(slot);
+                f.call(pair.key, pair.value, bucket, slot);
+            }
+        }
     }
 
     public void printData(PrintStream stream) {
