@@ -18,20 +18,23 @@ import java.util.function.Function;
  * 
  * Key : Generic
  * Value : Generic
- * 
+ *
+ * Pair
+ *   + key : Key
+ *   + value : Value
+ *
+ * Bucket : list collection of Pair
+ *
  * HashTable
  * - hash : Function
  * - table : Array [0..19] of Bucket
  * + add(Key, Value)
  * + search(Key) : Value
- * + printReport(PrintStream)
- * + computeAverageChainLength() : real
- * 
- * Pair
- *   + key : Key
- *   + value : Value
- * 
- * Bucket : list collection of Pair
+ * + search(Key, Function) : Value
+ * + iterate(Function)
+ * + computeAverageChainLength() : Real
+ * + reset()
+ * + constructor(Function)
  */
 
 public class HashTable<Key, Value> {
