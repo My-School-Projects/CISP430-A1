@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
  * CISP 430
  * Assignment 1 - Hashing
  */
-public class TaskManager {
+public class Application {
 
     static PrintStream out;
     HashTable<String, String> hashTable;
@@ -67,7 +67,7 @@ public class TaskManager {
     public void displayStatistics() {
         out.println(hashTable.computeAverageChainLength());
     }
-    public TaskManager() {
+    public Application() {
         hashTable = new HashTable<>(
             (String key) -> {
                 if (key.length() > 6) {

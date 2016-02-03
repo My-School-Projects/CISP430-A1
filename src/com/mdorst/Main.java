@@ -7,12 +7,12 @@ package com.mdorst;
  */
 public class Main {
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
-        taskManager.read("data/datain.txt");
-        taskManager.write("data/hashtable.txt");
-        taskManager.read("data/hashtable.txt");
-        taskManager.displayReport();
-        taskManager.search("data/search.txt");
-        taskManager.displayStatistics();
+        Application app = new Application();
+        app.read("data/datain.txt");
+        app.write("data/hashtable.txt");
+        app.read("data/hashtable.txt");
+        app.displayReport();
+        app.search("data/search.txt");
+        app.displayStatistics();
     }
 }
