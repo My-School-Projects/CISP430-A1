@@ -22,7 +22,7 @@ import java.util.function.Function;
  * - table : Array [0..19] of Bucket
  * + add(Key, Value)
  * + search(Key) : Value
- * + print(PrintStream)
+ * + printReport(PrintStream)
  * + computeAverageChainLength() : real
  * 
  * Pair
@@ -57,7 +57,17 @@ public class HashTable<Key, Value> {
         return null;
     }
 
-    public void print(PrintStream stream) {
+    public void printData(PrintStream stream) {
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < table[i].size(); j++) {
+                stream.println(table[i].get(j).key.toString() + table[i].get(j).value);
+            }
+        }
+    }
+
+    public void printReport(PrintStream stream) {
+        stream.println("Hash Table Verification Report");
+        stream.println("==============================");
         for (int i = 0; i < 20; i++) {
             stream.println("Bucket " + (i+1));
             for (int j = 0; j < table[i].size(); j++) {

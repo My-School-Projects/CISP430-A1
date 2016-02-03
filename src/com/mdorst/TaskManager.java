@@ -16,42 +16,31 @@ public class TaskManager {
     static PrintStream out;
     HashTable<String, String> hashTable;
 
-    /**
-     * Input from datain.txt
-     */
-    public void read() {
+    public void read(String path) {
         hashTable = new HashTable<>(new StringHash());
-        Data datain = new Data("data/datain.txt");
+        Data datain = new Data(path);
         String line;
         while ((line = datain.getLine()) != null) {
             hashTable.add(line.substring(0, 10), line.substring(10));
         }
     }
-    public void display() {
-        hashTable.print(System.out);
+    public void displayReport() {
+        hashTable.printReport(out);
+        out.println();
     }
-    public void write() {
+    public void write(String path) {
         try {
-            hashTable.print(new PrintStream("data/report.txt", "UTF-8"));
+            hashTable.printData(new PrintStream(path, "UTF-8"));
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
-    public void restore() {
-        String line;
-        Data dataout = new Data("data/report.txt");
-        hashTable = new HashTable<>(new StringHash());
-        while ((line = dataout.getLine()) != null) {
-            if (line.startsWith(" ")) {
-                hashTable.add(line.substring(11, 21), line.substring(24));
-            }
-        }
-    }
-    public void search() {
+    public void search(String path) {
         String query;
         String result;
-        Data search = new Data("data/search.txt");
+        Data search = new Data(path);
         out.println("Search and Retrieval Transactions");
+        out.println("=================================");
         out.println("Search Key    Record");
         while ((query = search.getLine()) != null) {
             out.print(query + "    ");
@@ -61,12 +50,11 @@ public class TaskManager {
                 out.println("Record not found");
             }
         }
+        out.println();
     }
-
-    public float computeAverageChainLength() {
-        return hashTable.computeAverageChainLength();
+    public void displayStatistics() {
+        out.println(hashTable.computeAverageChainLength());
     }
-
     public TaskManager() {
         hashTable = new HashTable<>(new StringHash());
         out = System.out;
