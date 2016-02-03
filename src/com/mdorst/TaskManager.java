@@ -37,18 +37,20 @@ public class TaskManager {
     }
     public void search(String path) {
         String query;
-        String result;
         DataInput search = new DataInput(path);
         out.println("Search and Retrieval Transactions");
         out.println("=================================");
         out.println("Search Key    Record");
         while ((query = search.getLine()) != null) {
             out.print(query + "    ");
-            if ((result = hashTable.search(query)) != null) {
-                out.println(result);
-            } else {
-                out.println("Record not found");
-            }
+            hashTable.search(query, (result, bucket, slot) -> {
+                if (result != null) {
+                    out.format("%2d/%2d    " + result, bucket, slot);
+                    out.println();
+                } else {
+                    out.println("         Record not found");
+                }
+            });
         }
         out.println();
     }
