@@ -12,6 +12,15 @@ import java.util.List;
  * CISP 430
  * Assignment 1 - Hashing
  */
+
+/**
+ * DataInput
+ * - data : list collection of String
+ * - it : iterator for list collection of String
+ * + getLine() : String
+ * + constructor(String)
+ */
+
 public class DataInput {
     private List<String> data;
     private Iterator<String> it;

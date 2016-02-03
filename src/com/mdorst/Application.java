@@ -13,6 +13,8 @@ import java.io.UnsupportedEncodingException;
  */
 
 /**
+ * Application uses DataInput
+ *
  * Application
  * - hashTable : HashTable (Key = String, Value = String)
  *
