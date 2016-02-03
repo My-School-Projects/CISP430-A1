@@ -18,7 +18,7 @@ public class TaskManager {
 
     public void read(String path) {
         hashTable = new HashTable<>(new StringHash());
-        Data datain = new Data(path);
+        DataInput datain = new DataInput(path);
         String line;
         while ((line = datain.getLine()) != null) {
             hashTable.add(line.substring(0, 10), line.substring(10));
@@ -38,7 +38,7 @@ public class TaskManager {
     public void search(String path) {
         String query;
         String result;
-        Data search = new Data(path);
+        DataInput search = new DataInput(path);
         out.println("Search and Retrieval Transactions");
         out.println("=================================");
         out.println("Search Key    Record");

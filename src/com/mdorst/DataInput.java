@@ -12,7 +12,7 @@ import java.util.List;
  * CISP 430
  * Assignment 1 - Hashing
  */
-public class Data {
+public class DataInput {
     private List<String> data;
     private Iterator<String> it;
 
@@ -24,7 +24,7 @@ public class Data {
         }
     }
 
-    public Data(String path) {
+    public DataInput(String path) {
         try {
             data = Files.readAllLines(Paths.get(path), Charset.defaultCharset());
         } catch (IOException e) {
