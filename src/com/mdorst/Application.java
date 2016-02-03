@@ -89,18 +89,7 @@ public class Application {
 
     public Application() {
         hashTable = new HashTable<>(
-            (String key) -> {
-                if (key.length() > 6) {
-                    return key.charAt(2) + key.charAt(4) + key.charAt(6);
-                }
-                if (key.length() > 4) {
-                    return key.charAt(2) + key.charAt(4);
-                }
-                if (key.length() > 2) {
-                    return (int) key.charAt(2);
-                }
-                return 0;
-            }
+            (String key) -> key.charAt(2) + key.charAt(4) + key.charAt(6)
     );
         out = System.out;
     }
