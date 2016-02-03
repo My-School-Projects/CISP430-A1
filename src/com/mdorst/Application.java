@@ -84,7 +84,7 @@ public class Application {
     }
 
     public void displayStatistics() {
-        out.println(hashTable.computeAverageChainLength());
+        out.println("Average Chain Length = " + hashTable.computeAverageChainLength());
     }
 
     public Application() {
