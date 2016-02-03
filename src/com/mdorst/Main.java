@@ -18,11 +18,7 @@ public class Main {
         taskManager.read();
         taskManager.write();
         taskManager.restore();
-        // TODO Search
-//        out.print("Query: ");
-//        Scanner input = new Scanner(System.in);
-//        input.nextLine();
-//        out.println(taskManager.search(input.nextLine()));
+        taskManager.search();
         out.println("Average Collision Chain Length:" + taskManager.computeAverageChainLength());
     }
 }

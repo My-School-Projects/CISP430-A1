@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
  */
 public class TaskManager {
 
+    static PrintStream out;
     HashTable<String, String> hashTable;
 
     /**
@@ -46,8 +47,20 @@ public class TaskManager {
             }
         }
     }
-    public String search(String key) {
-        return hashTable.search(key);
+    public void search() {
+        String query;
+        String result;
+        Data search = new Data("data/search.txt");
+        out.println("Search and Retrieval Transactions");
+        out.println("Search Key    Record");
+        while ((query = search.getLine()) != null) {
+            out.print(query + "    ");
+            if ((result = hashTable.search(query)) != null) {
+                out.println(result);
+            } else {
+                out.println("Record not found");
+            }
+        }
     }
 
     public float computeAverageChainLength() {
@@ -56,5 +69,6 @@ public class TaskManager {
 
     public TaskManager() {
         hashTable = new HashTable<>(new StringHash());
+        out = System.out;
     }
 }
