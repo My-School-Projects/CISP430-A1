@@ -3,7 +3,6 @@ package com.mdorst.container;
 import com.mdorst.util.function.QuadFunction;
 import com.mdorst.util.function.TriFunction;
 
-import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
@@ -73,17 +72,6 @@ public class HashTable<Key, Value> {
             for (int slot = 0; slot < table[bucket].size(); slot++) {
                 Pair pair = table[bucket].get(slot);
                 f.call(pair.key, pair.value, bucket, slot);
-            }
-        }
-    }
-
-    public void printReport(PrintStream stream) {
-        stream.println("Hash Table Verification Report");
-        stream.println("==============================");
-        for (int i = 0; i < 20; i++) {
-            stream.println("Bucket " + (i+1));
-            for (int j = 0; j < table[i].size(); j++) {
-                stream.println("  Slot " + (j+1) + " : " + table[i].get(j).key + "   " + table[i].get(j).value);
             }
         }
     }

@@ -25,7 +25,14 @@ public class TaskManager {
         }
     }
     public void displayReport() {
-        hashTable.printReport(out);
+        out.println("Hash Table Verification Report");
+        out.println("==============================");
+        hashTable.iterate((key, value, bucket, slot) -> {
+            if (slot == 0) {
+                out.println("Bucket " + (bucket+1));
+            }
+            out.println("    Slot " + (slot+1) + " : " + key + "   " + value);
+        });
         out.println();
     }
     public void write(String path) {
