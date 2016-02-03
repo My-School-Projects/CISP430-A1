@@ -77,14 +77,6 @@ public class HashTable<Key, Value> {
         }
     }
 
-    public void printData(PrintStream stream) {
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < table[i].size(); j++) {
-                stream.println(table[i].get(j).key.toString() + table[i].get(j).value);
-            }
-        }
-    }
-
     public void printReport(PrintStream stream) {
         stream.println("Hash Table Verification Report");
         stream.println("==============================");

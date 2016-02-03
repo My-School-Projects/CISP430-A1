@@ -30,7 +30,10 @@ public class TaskManager {
     }
     public void write(String path) {
         try {
-            hashTable.printData(new PrintStream(path, "UTF-8"));
+            PrintStream stream = new PrintStream(path, "UTF-8");
+            hashTable.iterate((key, value, bucket, slot) -> {
+                stream.println(key + value);
+            });
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
