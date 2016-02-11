@@ -89,7 +89,7 @@ public class Application {
 
     public Application() {
         hashTable = new HashTable<>(
-            (String key) -> key.charAt(2) + key.charAt(4) + key.charAt(6)
+            (String key) -> key.charAt(1) + key.charAt(3) + key.charAt(5)
     );
         out = System.out;
     }
