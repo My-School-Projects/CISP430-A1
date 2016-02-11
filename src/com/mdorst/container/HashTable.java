@@ -81,10 +81,14 @@ public class HashTable<Key, Value> {
     
     public float computeAverageChainLength() {
         float length = 0;
+        float chains = 0;
         for (int i = 0; i < 20; i++) {
-            length += table[i].size();
+            if (table[i].size() > 1) {
+                chains += 1;
+                length += table[i].size()-1;
+            }
         }
-        return length / 20;
+        return length / chains;
     }
 
     public void reset() {
