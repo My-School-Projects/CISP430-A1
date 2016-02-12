@@ -1,5 +1,6 @@
 package com.mdorst.container;
 
+import com.mdorst.util.function.Function;
 import com.mdorst.util.function.QuadFunction;
 import com.mdorst.util.function.TriFunction;
 
@@ -7,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Function;
 
 /**
  * Michael Dorst
@@ -39,8 +39,8 @@ import java.util.function.Function;
  * + constructor(Function)
  */
 
-public class HashTable<Key, Value> {
-    private class Pair {
+public class HashTable<Key, Value> implements Serializable {
+    private class Pair implements Serializable {
         public Key key;
         public Value value;
         public Pair(Key key, Value value) {
