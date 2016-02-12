@@ -3,6 +3,8 @@ package com.mdorst.container;
 import com.mdorst.util.function.QuadFunction;
 import com.mdorst.util.function.TriFunction;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
@@ -47,10 +49,10 @@ public class HashTable<Key, Value> {
         }
     }
     private Function<Key, Integer> hash;
-    private List<Pair>[] table;
+    private List<List<Pair>> table;
 
     public void add(Key key, Value value) {
-        table[hash.apply(key) % 20].add(new Pair(key, value));
+        table.get(hash.apply(key) % 20).add(new Pair(key, value));
     }
 
     public Value search(Key key) {
@@ -59,8 +61,8 @@ public class HashTable<Key, Value> {
 
     public Value search(Key key, TriFunction<Value, Integer, Integer> f) {
         int bucket = hash.apply(key) % 20;
-        for (int slot = 0; slot < table[bucket].size(); slot++) {
-            Pair pair = table[bucket].get(slot);
+        for (int slot = 0; slot < table.get(bucket).size(); slot++) {
+            Pair pair = table.get(bucket).get(slot);
             if (key.equals(pair.key)) {
                 f.call(pair.value, bucket, slot);
                 return pair.value;
@@ -72,8 +74,8 @@ public class HashTable<Key, Value> {
 
     public void iterate(QuadFunction<Key, Value, Integer, Integer> f) {
         for (int bucket = 0; bucket < 20; bucket++) {
-            for (int slot = 0; slot < table[bucket].size(); slot++) {
-                Pair pair = table[bucket].get(slot);
+            for (int slot = 0; slot < table.get(bucket).size(); slot++) {
+                Pair pair = table.get(bucket).get(slot);
                 f.call(pair.key, pair.value, bucket, slot);
             }
         }
@@ -83,18 +85,18 @@ public class HashTable<Key, Value> {
         float length = 0;
         float chains = 0;
         for (int i = 0; i < 20; i++) {
-            if (table[i].size() > 1) {
+            if (table.get(i).size() > 1) {
                 chains += 1;
-                length += table[i].size()-1;
+                length += table.get(i).size()-1;
             }
         }
         return length / chains;
     }
 
     public void reset() {
-        table = new List[20];
+        table = new ArrayList<>(20);
         for (int i = 0; i < 20; i++) {
-            table[i] = new LinkedList<>();
+            table.add(new LinkedList<>());
         }
     }
 
