@@ -2,9 +2,7 @@ package com.mdorst;
 
 import com.mdorst.container.HashTable;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
 /**
  * Michael Dorst
@@ -39,7 +37,7 @@ public class Application {
             hashTable.add(line.substring(0, 10), line.substring(10));
         }
     }
-    
+
     public void displayReport() {
         out.println("Hash Table Verification Report");
         out.println("==============================");
@@ -52,13 +50,21 @@ public class Application {
         out.println();
     }
 
+    @SuppressWarnings("unchecked")
+    public void restore(String path) {
+        try {
+            ObjectInputStream stream = new ObjectInputStream(new FileInputStream(path));
+            hashTable = (HashTable<String, String>) stream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void write(String path) {
         try {
-            PrintStream stream = new PrintStream(path, "UTF-8");
-            hashTable.iterate((key, value, bucket, slot) -> {
-                stream.println(key + value);
-            });
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(path));
+            stream.writeObject(hashTable);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
