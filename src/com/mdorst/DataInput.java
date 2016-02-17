@@ -14,11 +14,17 @@ import java.util.List;
  */
 
 /**
+ * ** Class Diagram **
  * DataInput
  * - data : list collection of String
  * - it : iterator for list collection of String
  * + getLine() : String
  * + constructor(String)
+ *
+ * ** State Diagram **
+ * --- constructor(s) ---> s0
+ * s0 --- getLine() ---> s1
+ * s1 --- getLine() ---> s2..n
  */
 
 public class DataInput {
