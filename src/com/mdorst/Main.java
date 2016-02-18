@@ -5,6 +5,12 @@ package com.mdorst;
  * CISP 430
  * Assignment 1 - Hashing
  */
+
+/**
+ * HashTable includes Pair
+ * Application uses DataInput
+ */
+
 public class Main {
     public static void main(String[] args) {
         Application app = new Application();
