@@ -1,8 +1,9 @@
 package com.mdorst.util.function;
 
 /**
- * Michael Dorst
+ * This class exists to facilitate "first class" functions, or functions
+ * that can be stored, referenced, and passed around.
  */
 public interface TriFunction<T, U, V> {
-    public void call(T t, U u, V v);
+    void call(T t, U u, V v);
 }

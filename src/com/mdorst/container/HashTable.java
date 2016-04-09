@@ -25,10 +25,24 @@ public class HashTable<Key, Value> implements Serializable {
         table.get(hash.apply(key) % 20).add(new Pair(key, value));
     }
 
+    /**
+     * Finds the value associated with {@code key}, and returns it.
+     * @param key The key to be searched for
+     * @return The value associated with {@code key}
+     */
     public Value search(Key key) {
         return search(key, (v, b, s) -> {});
     }
 
+    /**
+     * Finds the value associated with {@code key}.
+     * Calls {@code f}, passing in the value, as well as the
+     * indices of the bucket and slot it was found in.
+     * Returns the value.
+     * @param key The key to be searched for
+     * @param f The function to be called upon finding the value associated with {@code key}
+     * @return The value associated with {@code key}
+     */
     public Value search(Key key, TriFunction<Value, Integer, Integer> f) {
         int bucket = hash.apply(key) % 20;
         for (int slot = 0; slot < table.get(bucket).size(); slot++) {
@@ -42,6 +56,12 @@ public class HashTable<Key, Value> implements Serializable {
         return null;
     }
 
+    /**
+     * Iterates over all the elements in the table.
+     * Calls {@code f} on each element, passing in its key, its value,
+     * and the indices of the bucket and slot where it is located.
+     * @param f The function to be called on each element
+     */
     public void iterate(QuadFunction<Key, Value, Integer, Integer> f) {
         for (int bucket = 0; bucket < 20; bucket++) {
             for (int slot = 0; slot < table.get(bucket).size(); slot++) {
