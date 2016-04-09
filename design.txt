@@ -1,0 +1,44 @@
+Application ---   uses   --- DataInput
+Application ---   has a  --- HashTable
+HashTable   ---   has a  --- Function
+HashTable   --- has many --- Bucket
+Bucket      --- has many --- Pair
+Pair        ---   has a  --- Key
+Pair        ---   has a  --- Value
+
+Key : Generic
+Value : Generic
+
+Pair
+ + key : Key
+ + value : Value
+
+Bucket : list collection of Pair
+
+HashTable
+ - hash : Function
+ - table : Array [0..19] of Bucket
+ + add(Key, Value)
+ + search(Key) : Value
+ + search(Key, Function) : Value
+ + iterate(Function)
+ + computeAverageChainLength() : Real
+ + reset()
+ + constructor(Function)
+
+DataInput
+ - data : list collection of String
+ - it : iterator for list collection of String
+ + getLine() : String
+ + constructor(String)
+
+Application
+ - hashTable : HashTable (Key = String, Value = String)
+ + read(String)
+ + write(String)
+ + restore(String)
+ + displayReport()
+ + search(String)
+ + displayStatistics()
+ + constructor()
+ <<static>> main(Array of String)

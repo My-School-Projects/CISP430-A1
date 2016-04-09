@@ -9,46 +9,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Michael Dorst
- * CISP 430
- * Assignment 1 - Hashing
- */
-
-/**
- * ** Class Diagram **
- * HashTable includes Pair
- * 
- * Key : Generic
- * Value : Generic
- *
- * Pair
- *   + key : Key
- *   + value : Value
- *
- * Bucket : list collection of Pair
- *
- * HashTable
- * - hash : Function
- * - table : Array [0..19] of Bucket
- * + add(Key, Value)
- * + search(Key) : Value
- * + search(Key, Function) : Value
- * + iterate(Function)
- * + computeAverageChainLength() : Real
- * + reset()
- * + constructor(Function)
- *
- * ** State Diagram **
- * --- constructor(hashFunction) ---> s0
- * s0 --- add(key, value) ---> s1
- * s1 --- search(key) ---> s1
- * s1 --- search(key, function) ---> s1
- * s1 --- iterate(function) ---> s1
- * s1 --- computeAverageChainLength() ---> s1
- * s1 --- reset() ---> s0
- */
-
 public class HashTable<Key, Value> implements Serializable {
     private class Pair implements Serializable {
         public Key key;

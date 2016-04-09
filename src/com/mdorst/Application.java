@@ -4,37 +4,6 @@ import com.mdorst.container.HashTable;
 
 import java.io.*;
 
-/**
- * Michael Dorst
- * CISP 430
- * Assignment 1 - Hashing
- */
-
-/**
- * ** Class Diagram **
- * Application uses DataInput
- *
- * Application
- * - hashTable : HashTable (Key = String, Value = String)
- *
- * + read(String)
- * + write(String)
- * + restore(String)
- * + displayReport()
- * + search(String)
- * + displayStatistics()
- * + constructor()
- *
- * ** State Diagram **
- * --- constructor() ---> s0
- * s0 --- read(s) ---> s1
- * s0 --- restore(s) ---> s1
- * s1 --- write(s) ---> s1
- * s1 --- search(s) ---> s
- * s1 --- displayReport() ---> s1
- * s1 --- displayStatistics() ---> s1
- */
-
 public class Application {
 
     static PrintStream out;
