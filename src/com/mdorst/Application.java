@@ -79,4 +79,14 @@ public class Application {
     );
         out = System.out;
     }
+
+    public static void main(String[] args) {
+        Application app = new Application();
+        app.read("data/datain.txt");
+        app.write("data/hashtable.data");
+        app.restore("data/hashtable.data");
+        app.displayReport();
+        app.search("data/search.txt");
+        app.displayStatistics();
+    }
 }
