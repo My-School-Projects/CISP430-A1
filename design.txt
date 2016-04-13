@@ -1,10 +1,14 @@
 Application ---   uses   --- DataInput
 Application ---   has a  --- HashTable
+
 HashTable   ---   has a  --- Function
 HashTable   --- has many --- Bucket
+
 Bucket      --- has many --- Pair
+
 Pair        ---   has a  --- Key
 Pair        ---   has a  --- Value
+
 
 Key : Generic
 Value : Generic
