@@ -82,8 +82,12 @@ public class Application {
 
     public static void main(String[] args) {
         Application app = new Application();
+        out.println("Reading from datain.txt...\n");
         app.read("data/datain.txt");
+        app.displayReport();
+        out.println("Writing to hashtable.data...\n");
         app.write("data/hashtable.data");
+        out.println("Restoring from hashtable.data...\n");
         app.restore("data/hashtable.data");
         app.displayReport();
         app.search("data/search.txt");
